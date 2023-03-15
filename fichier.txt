@@ -1,0 +1,139 @@
+Travail à effectuer en binôme: 
+Medghali/Majid, Nom/Prénom
+
+Partie 2 Prototype des fonctions en langage C
+
+Exercise 3 : Type Abstrait de Données (TAD)
+Ex3.1) À quoi fait référence le terme abstrait dans le concept de
+    ``Type Abstrait de Données''?
+%
+Le mot abstrait fait référence à un concept de programmation qui définit l'interface d'un ensemble et les opérations associées sans savoir la façon d'implémentation, ce qui permet à l'utilisateur d'utiliser ces opérations sans savoir les détails d'implémentation, on trouve comme exemple : les arbres, les graphes et la file.
+
+
+Ex3.2) Quel aspect va différentier les mises en œuvre d'un TAD?
+%
+On peut avoir des implémentations qui utilisent des allocations dans le tas et d'autre implémentations qui utilise que des allocations dans la pile, il y a aussi une différence dans la complexité ce qui donne des performances différentes.
+%
+
+Ex3.3) Pourquoi chercher à écrire un algorithme (même en langage C) à
+    partir d'un TAD?
+%
+Il y a des avantages à écrire un algorithme de TAL en utilisant le langage C, comme la possibilité de mieux contrôler les performances, les ressources, la personnalisation de l'application, la sécurité, l'indépendance.
+%
+
+Ex3.4) Dans la mise en œuvre que vous avez réalisée, pourquoi mettre le tableau dans une structure au lieu de l'utiliser directement comme paramètre: 
+int set__add(int * s, int i)?
+%
+
+Le but de mettre un tableau dans une structure, c'est d'ajouter des informations supplémentaires comme la taille du tableau et aussi d'implémenter des opérations spécifique sur le tableau.
+%
+
+
+Exercise 4 : La fonction set__is_empty.
+Ex4.1) Donner les prototypes de la fonction set__is_empty
+    correspondant aux deux passages de paramètres possibles.
+%
+ int set__is_empty(struct set* se); 
+ int set__is_empty(struct set se);
+ 
+%
+
+Ex4.2) Sur un exemple, montrer qu'il est préférable d'avoir un
+    passage par adresse pour le paramètre d'entrée.
+%
+le passage par adresse permet de conserver les changements effectués par la fonctions par contre le passage par valeur ne conserve pas les changements.
+
+void change_to_zero(struct set se){
+     se.s[0]=0;
+     }
+
+void change_to_zero(struct set *se){
+     se.s[0]=0;
+     }
+   
+
+%
+
+Ex4.3) Pourquoi le passage par adresse ne correspond pas à la
+    description (au comportement) de cette opération dans le TAD?
+    Préciser l'utilisation du mot-clé "const" dans le
+    prototype de la fonction.
+    
+%
+La fonction set__is_empty fait la vérification est ce que la structure est vide et n'effectue pas des changements dans la structure donc le mot const indique que la fonction ne change pas la structure donnée en paramètre  
+%
+
+
+Exercise 5 : La fonction set__add
+Ex5.1) Pourquoi est-il possible, en langage C, d'avoir un prototype
+   de la fonction set__add qui ne renvoie pas une valeur de type
+   struct set ?
+%
+un peut avoir un prototype de la manière suivante:
+   void set__add(struct set* se, int c);
+   comme ça la fonction prend un pointeur sur une structure et après le sort de la fonction la structure garde les changement effuctués à l'intérieur de la fonction. 
+%
+
+Ex5.2)  Pourquoi avoir choisi de retourner une valeur entière? Lister tous les cas d'utilisation que vous avez mis en œuvre.
+%
+
+%
+
+
+Exercise 6 : La fonction set__empty
+La fonction set__empty initialise un ensemble à vide.
+Ex6.1) Le TAD n'indique pas le mode d'allocation mémoire. Deux modes
+    sont possibles: allocation par le TAD ou allocation par le client
+    du TAD. Il y a trois prototypes possibles pour la fonction:
+
+    struct set * set__empty();
+
+    struct set set__empty();
+
+    void set__empty(struct set *);
+
+    À quel mode d'allocation mémoire correspond chacun de ces
+    prototypes?
+    Montrer qu'une allocation sur la pile n'est pas compatible avec
+    le premier prototype.
+%
+répondre entre ces deux balises
+%
+
+Ex6.2) Expliquer pourquoi le compilateur doit connaître la définition de
+    struct set afin de compiler la fonction main ci-dessous.
+
+      int main() {
+        struct set s = set__empty();
+        set__add(&s, 64);
+        return 0;
+      }
+%
+répondre entre ces deux balises
+%
+
+Ex6.3) Écrire un exemple d'utilisation des deux derniers prototypes,
+    et donner leurs avantages et inconvénients.
+%
+répondre entre ces deux balises
+%
+
+Partie 3 tableau trié de capacité variable.
+
+Ex7.2) Justifier le stockage de la taille de l'ensemble (size)
+     au lieu de l'utilisation d'une butée comme précédemment.
+%
+répondre entre ces deux balises
+%
+
+Ex9.1) Pourquoi la fonction set_free() n'apparaît-elle pas dans le TAD?
+%
+répondre entre ces deux balises
+%
+
+Ex9.2) Expliquer ce qu'il est nécessaire de libérer dans la mise en
+      oeuvre du tableau dynamique et donner le code de la fonction
+      void set__free().
+%
+répondre entre ces deux balises
+%
